@@ -1,18 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BarangKeluarController;
+use App\Http\Controllers\GudangController;
+use App\Http\Controllers\ProduksiController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Halaman utama -> Barang Keluar
+Route::get('/', [BarangKeluarController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// CRUD Barang Keluar
+Route::resource('barang-keluar', BarangKeluarController::class);
+
+// CRUD Gudang
+Route::resource('gudang', GudangController::class);
+
+// CRUD Produksi
+Route::resource('produksi', ProduksiController::class);

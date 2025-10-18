@@ -2,21 +2,21 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Produksi;
 
-class DatabaseSeeder extends Seeder
+class ProduksiSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $data = [
+            ['nama_produksi' => 'Produksi A'],
+            ['nama_produksi' => 'Produksi B'],
+            ['nama_produksi' => 'Produksi C'],
+        ];
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        foreach ($data as $item) {
+            Produksi::create($item);
+        }
     }
 }

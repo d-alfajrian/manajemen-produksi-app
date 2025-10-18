@@ -9,13 +9,14 @@ return new class extends Migration {
     {
         Schema::create('gudangs', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_produksi');
+            $table->foreign('kode_produksi')->references('kode_produksi')->on('produksis')->onDelete('cascade');
             $table->string('nama_barang');
             $table->integer('jumlah');
-            $table->string('lokasi');
+            $table->integer('stock');
+            $table->string('tanggal_masuk');
+
             $table->timestamps();
 
-            $table->foreign('kode_produksi')->references('kode_produksi')->on('produksis')->onDelete('cascade');
         });
     }
 

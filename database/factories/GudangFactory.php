@@ -13,7 +13,7 @@ class GudangFactory extends Factory
             'produksi_id' => Produksi::inRandomOrder()->first()->id ?? 1,
             'kode_produksi' => 'KD-' . $this->faker->unique()->numerify('###'),
             'nama_barang' => $this->faker->word(),
-            'stok' => $this->faker->numberBetween(10, 500),
+            'stock' => $this->faker->numberBetween(10, 500),
             'tanggal_masuk' => $this->faker->date(),
         ];
     }

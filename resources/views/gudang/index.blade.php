@@ -12,10 +12,10 @@
             <th>No</th>
             <th>Kode Produksi</th>
             <th>Nama Barang</th>
-            <th>Stok</th>
+            <th>jumlah</th>
+            <th>stock</th>
             <th>Tanggal Masuk</th>
-            <th>Produksi</th>
-            <th>Aksi</th>
+            <th>keterangan</th>
         </tr>
     </thead>
     <tbody>

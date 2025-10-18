@@ -23,10 +23,10 @@ class GudangController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'produksi_id' => 'required|exists:produksis,id',
-            'kode_produksi' => 'required',
+            'kode_produksi' => 'required|exists:produksis,id',
             'nama_barang' => 'required',
-            'stok' => 'required|numeric',
+            'jumlah' => 'required',
+            'stock' => 'required|numeric',
             'tanggal_masuk' => 'required|date',
         ]);
 

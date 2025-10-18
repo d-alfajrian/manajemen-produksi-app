@@ -23,15 +23,15 @@ class GudangController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode_produksi' => 'required|exists:produksis,id',
-            'nama_barang' => 'required',
-            'jumlah' => 'required',
+            'kode_produksi' => 'required|exists:produksis,kode_produksi',
+            'nama_barang' => 'required|string',
+            'jumlah' => 'required|numeric',
             'stock' => 'required|numeric',
             'tanggal_masuk' => 'required|date',
         ]);
-
+    
         Gudang::create($request->all());
-
+    
         return redirect()->route('gudang.index')->with('success', 'Data gudang berhasil ditambahkan');
     }
 

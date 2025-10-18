@@ -23,8 +23,9 @@ class ProduksiController extends Controller
         $request->validate([
             'kode_produksi' => 'required|unique:produksis',
             'nama_barang' => 'required',
-            'jumlah_produksi' => 'required|numeric',
+            'jumlah_barang' => 'required|numeric',
             'tanggal_produksi' => 'required|date',
+            'keterangan' => 'required',
         ]);
 
         Produksi::create($request->all());

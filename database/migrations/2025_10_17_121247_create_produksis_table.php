@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->string('kode_produksi')->unique();
             $table->string('nama_barang');
             $table->date('tanggal_produksi');
-            $table->string('shift');
+            $table->integer('jumlah_barang');
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });

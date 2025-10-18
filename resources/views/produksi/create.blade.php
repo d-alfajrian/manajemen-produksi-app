@@ -16,11 +16,15 @@
         </div>
         <div class="mb-3">
             <label>Jumlah</label>
-            <input type="number" name="jumlah" class="form-control" required>
+            <input type="number" name="jumlah_barang" class="form-control" required>
         </div>
         <div class="mb-3">
             <label>Tanggal Produksi</label>
             <input type="date" name="tanggal_produksi" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>keterangan</label>
+            <input type="text" name="keterangan" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-success">Simpan</button>
         <a href="{{ route('produksi.index') }}" class="btn btn-secondary">Kembali</a>

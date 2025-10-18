@@ -13,8 +13,8 @@ class Produksi extends Model
     protected $fillable = [
         'kode_produksi',
         'nama_barang',
+        'jumlah_barang',
         'tanggal_produksi',
-        'shift',
         'keterangan',
     ];
 

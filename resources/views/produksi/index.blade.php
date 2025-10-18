@@ -16,7 +16,7 @@
                 <th>Nama Barang</th>
                 <th>Jumlah</th>
                 <th>Tanggal Produksi</th>
-                <th>Aksi</th>
+                <th>keterangan</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{ $produksi->kode_produksi }}</td>
                     <td>{{ $produksi->nama_barang }}</td>
-                    <td>{{ $produksi->jumlah }}</td>
+                    <td>{{ $produksi->jumlah_barang }}</td>
                     <td>{{ $produksi->tanggal_produksi }}</td>
                     <td>
                         <a href="{{ route('produksi.show', $produksi->id) }}" class="btn btn-info btn-sm">Lihat</a>

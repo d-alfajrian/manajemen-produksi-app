@@ -3,35 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gudang;
-use App\Models\Produksi;
 use Illuminate\Http\Request;
 
 class GudangController extends Controller
 {
     public function index()
     {
-        $gudangs = Gudang::with('produksi')->get();
+        $gudangs = Gudang::all();
         return view('gudang.index', compact('gudangs'));
     }
 
     public function create()
     {
-        $produksis = Produksi::all();
-        return view('gudang.create', compact('produksis'));
+        return view('gudang.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'kode_produksi' => 'required|exists:produksis,kode_produksi',
-            'nama_barang' => 'required|string',
+            'kode_produksi' => 'required|unique:gudangs',
+            'nama_barang' => 'required',
             'jumlah' => 'required|numeric',
-            'stock' => 'required|numeric',
             'tanggal_masuk' => 'required|date',
+            'keterangan' => 'nullable',
         ]);
-    
+
         Gudang::create($request->all());
-    
+
         return redirect()->route('gudang.index')->with('success', 'Data gudang berhasil ditambahkan');
     }
 
@@ -42,15 +40,17 @@ class GudangController extends Controller
 
     public function edit(Gudang $gudang)
     {
-        $produksis = Produksi::all();
-        return view('gudang.edit', compact('gudang', 'produksis'));
+        return view('gudang.edit', compact('gudang'));
     }
 
     public function update(Request $request, Gudang $gudang)
     {
         $request->validate([
-            'stok' => 'required|numeric',
+            'kode_produksi' => 'required|unique:gudangs,kode_produksi,' . $gudang->id,
+            'nama_barang' => 'required',
+            'jumlah' => 'required|numeric',
             'tanggal_masuk' => 'required|date',
+            'keterangan' => 'nullable',
         ]);
 
         $gudang->update($request->all());

@@ -10,10 +10,10 @@ return new class extends Migration {
         Schema::create('produksis', function (Blueprint $table) {
             $table->id();
             $table->string('kode_produksi')->unique();
-            $table->string('nama_barang');
-            $table->date('tanggal_produksi');
+            $table->string('nama_barang');            
             $table->integer('jumlah_barang');
-            $table->string('keterangan')->nullable();
+            $table->date('tanggal_produksi');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

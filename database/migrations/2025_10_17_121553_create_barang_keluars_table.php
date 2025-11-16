@@ -7,15 +7,14 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('keluars', function (Blueprint $table) {
+        Schema::create('barang_keluars', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_produksi');
-            $table->date('tanggal_keluar');
-            $table->integer('jumlah_keluar');
-            $table->string('tujuan');
+            $table->string('kode_produksi')->nullable(); // atau kode_keluar sesuai desainmu
+            $table->integer('jumlah_keluar')->nullable();
+            $table->date('tanggal_keluar')->nullable();
+            $table->string('tujuan')->nullable();
+            $table->text('keterangan')->nullable();
             $table->timestamps();
-
-            $table->foreign('kode_produksi')->references('kode_produksi')->on('produksis')->onDelete('cascade');
         });
     }
 

@@ -9,14 +9,15 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th>Kode Produksi</th>
                 <th>Nama Barang</th>
                 <th>Jumlah</th>
                 <th>Tanggal Produksi</th>
-                <th>keterangan</th>
+                <th>Keterangan</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -24,20 +25,23 @@
                 <tr>
                     <td>{{ $produksi->kode_produksi }}</td>
                     <td>{{ $produksi->nama_barang }}</td>
-                    <td>{{ $produksi->jumlah_barang }}</td>
-                    <td>{{ $produksi->tanggal_produksi }}</td>
+                    <td>{{ $produksi->jumlah }}</td> <!-- DIUBAH: jumlah_barang -> jumlah -->
+                    <td>{{ \Carbon\Carbon::parse($produksi->tanggal_produksi)->format('d-m-Y') }}</td>
+                    <td>{{ $produksi->keterangan }}</td>
                     <td>
                         <a href="{{ route('produksi.show', $produksi->id) }}" class="btn btn-info btn-sm">Lihat</a>
                         <a href="{{ route('produksi.edit', $produksi->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('produksi.destroy', $produksi->id) }}" method="POST" style="display:inline-block">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus data ini?')">Hapus</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus data ini?')">Hapus</button>
                         </form>
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="5" class="text-center">Belum ada data</td></tr>
+                <tr>
+                    <td colspan="6" class="text-center">Belum ada data produksi</td>
+                </tr>
             @endforelse
         </tbody>
     </table>

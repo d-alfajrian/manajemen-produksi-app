@@ -13,9 +13,9 @@ class Produksi extends Model
     protected $fillable = [
         'kode_produksi',
         'nama_barang',
-        'jumlah_barang',
+        'jumlah', // PASTIKAN 'jumlah' ADA DI SINI
         'tanggal_produksi',
-        'keterangan',
+        'keterangan'
     ];
 
     public function gudangs(): HasMany

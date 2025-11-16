@@ -9,18 +9,33 @@ class BarangKeluar extends Model
 {
     use HasFactory;
 
-    protected $table = 'keluars';
+    protected $table = 'barang_keluars'; // pastikan nama tabel benar
 
     protected $fillable = [
-        'gudang_id',
         'kode_produksi',
         'nama_barang',
-        'jumlah_keluar',
-        'tanggal_keluar'
+        'tanggal_keluar',
+        'tujuan',
+        'jumlah_keluar', // atau 'jumlah' sesuai migrationmu
+        'keterangan',
     ];
 
+    /**
+     * BarangKeluar belongs to Gudang (relasi via kode_produksi).
+     * Jika barang_keluars menyimpan direkt foreign key ke gudangs lewat 'kode_produksi'
+     * maka gunakan mapping berikut.
+     */
     public function gudang()
     {
-        return $this->belongsTo(Gudang::class);
+        return $this->belongsTo(Gudang::class, 'kode_produksi', 'kode_produksi');
     }
+
+    /**
+     * Kalau kamu juga mau relasi ke Produksi (jika relevan),
+     * uncomment dan sesuaikan jika tabel produksis punya 'kode_produksi'.
+     */
+    // public function produksi()
+    // {
+    //     return $this->belongsTo(Produksi::class, 'kode_produksi', 'kode_produksi');
+    // }
 }

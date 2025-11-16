@@ -25,17 +25,20 @@ class BarangKeluarController extends Controller
     // 🟢 3. Simpan data baru
     public function store(Request $request)
     {
-        $request->validate([
-            'kode_produksi' => 'required',
-            'nama_barang' => 'required',
-            'jumlah_keluar' => 'required|numeric',
-            'tanggal_keluar' => 'required|date',
-            'gudang_id' => 'required'
-        ]);
+    $request->validate([
+        'kode_produksi' => 'required',
+        'nama_barang' => 'required',
+        'tanggal_keluar' => 'required|date',
+        'tujuan' => 'required',
+        'jumlah_keluar' => 'required|integer',
+        'keterangan' => 'nullable|string',
+    ]);
 
-        BarangKeluar::create($request->all());
-        return redirect()->route('barang-keluar.index')->with('success', 'Data berhasil ditambahkan!');
-    }
+    BarangKeluar::create($request->all());
+
+    return redirect()->route('barangkeluar.index')->with('success', 'Data barang keluar berhasil disimpan.');
+    }   
+
 
     // 🟢 4. Form edit data
     public function edit($id)

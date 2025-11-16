@@ -51,6 +51,6 @@ Data yang dikelola:
 - Tanggal Keluar
 
 software yang harus terinstall
-Laragon
-PHP 7.4+
-MySQL 5.7+
+- Laragon
+- PHP 7.4+
+- MySQL 5.7+
